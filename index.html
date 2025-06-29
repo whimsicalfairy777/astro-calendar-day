@@ -20,67 +20,76 @@
       padding: 20px;
       overflow-x: hidden;
       position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     
     .container {
       max-width: 800px;
-      margin: 0 auto;
+      width: 100%;
+      margin: 20px auto;
       position: relative;
       z-index: 10;
     }
     
     header {
       text-align: center;
-      padding: 20px 0;
-      margin-bottom: 30px;
+      padding: 15px 0;
+      margin-bottom: 20px;
       position: relative;
     }
     
     h1 {
-      font-size: 3.5rem;
-      margin-bottom: 15px;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
       color: #303328;
       background: #D1C9BD;
-      padding: 15px 40px;
+      padding: 12px 30px;
       display: inline-block;
       border: 1px solid #9C816E;
-      box-shadow: 3px 3px 8px rgba(0,0,0,0.1);
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
       border-radius: 4px;
     }
     
     .date-display {
-      font-size: 2.2rem;
+      font-size: 1.8rem;
       color: #303328;
-      padding: 12px 25px;
+      padding: 10px 20px;
       background: #F3EEEE;
       border: 1px solid #D1C9BD;
       display: inline-block;
       border-radius: 4px;
-      margin-top: 10px;
+      margin-top: 5px;
     }
     
     .moon-section {
       text-align: center;
-      margin: 30px 0;
-      padding: 20px;
+      margin: 20px 0;
+      padding: 15px;
+      background: #F3EEEE;
+      border: 1px solid #D1C9BD;
+      border-radius: 6px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
     }
     
     .moon-container {
-      display: inline-block;
-      padding: 20px;
-      background: #F3EEEE;
-      border: 1px solid #D1C9BD;
-      border-radius: 8px;
-      box-shadow: 3px 3px 8px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
     
     .moon-phase {
-      width: 150px;
-      height: 150px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       background: radial-gradient(circle at 30% 30%, #F3EEEE, #D1C9BD, #9C816E);
-      box-shadow: inset 2px 2px 5px rgba(0,0,0,0.1);
-      margin: 0 auto 20px;
+      box-shadow: inset 2px 2px 4px rgba(0,0,0,0.1);
+      margin: 0 auto 15px;
       position: relative;
       overflow: hidden;
     }
@@ -88,21 +97,21 @@
     .moon-phase::before {
       content: '';
       position: absolute;
-      width: 130px;
-      height: 130px;
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
       background: #EEF3ED;
       top: 10px;
       left: 20px;
       transform: translateX(-15%);
-      box-shadow: inset -1px -1px 3px rgba(0,0,0,0.1);
+      box-shadow: inset -1px -1px 2px rgba(0,0,0,0.1);
     }
     
     .moon-label {
       text-align: center;
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       color: #303328;
-      padding: 10px 20px;
+      padding: 8px 15px;
       background: #D1C9BD;
       border: 1px solid #9C816E;
       display: inline-block;
@@ -113,43 +122,43 @@
       background: #F3EEEE;
       border: 1px solid #D1C9BD;
       border-radius: 6px;
-      padding: 25px;
-      margin-bottom: 25px;
-      box-shadow: 3px 3px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
     }
     
     .event-header {
       display: flex;
       align-items: center;
-      margin-bottom: 20px;
-      padding-bottom: 15px;
+      margin-bottom: 15px;
+      padding-bottom: 12px;
       border-bottom: 1px solid #9C816E;
     }
     
     .event-time {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       background: #D1C9BD;
       color: #303328;
-      padding: 8px 15px;
+      padding: 6px 12px;
       border-radius: 4px;
-      margin-right: 20px;
-      min-width: 130px;
+      margin-right: 15px;
+      min-width: 110px;
       border: 1px solid #9C816E;
     }
     
     .event-title {
-      font-size: 2.2rem;
+      font-size: 1.8rem;
       color: #303328;
       flex-grow: 1;
     }
     
     .event-content h3 {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       color: #303328;
-      margin: 15px 0 10px;
+      margin: 12px 0 8px;
       position: relative;
       display: inline-block;
-      padding-bottom: 5px;
+      padding-bottom: 3px;
     }
     
     .event-content h3::after {
@@ -163,52 +172,54 @@
     }
     
     .event-content p {
-      font-size: 1.5rem;
-      line-height: 1.6;
-      margin-bottom: 15px;
+      font-size: 1.2rem;
+      line-height: 1.5;
+      margin-bottom: 12px;
       color: #303328;
-      padding: 5px 10px;
+      padding: 4px 8px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     
     .advice {
       background: rgba(209, 201, 189, 0.3);
       border-left: 2px solid #9C816E;
-      padding: 15px;
-      margin-top: 15px;
+      padding: 12px;
+      margin-top: 12px;
       border-radius: 0 4px 4px 0;
     }
     
     .no-events {
       text-align: center;
-      font-size: 2.5rem;
-      padding: 50px 20px;
+      font-size: 2rem;
+      padding: 40px 15px;
       color: #303328;
       background: #F3EEEE;
       border: 1px solid #D1C9BD;
       border-radius: 6px;
-      margin: 30px 0;
+      margin: 25px 0;
     }
     
     .footer {
       text-align: center;
-      margin-top: 40px;
-      padding: 20px;
+      margin-top: 30px;
+      padding: 15px;
       border-top: 1px solid #9C816E;
       color: #303328;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       background: #D1C9BD;
       border-radius: 6px;
       border: 1px solid #9C816E;
-      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
     }
     
     .star {
       position: absolute;
-      color: #9C816E;
+      color: #ffffff;
       animation: floatStars linear infinite;
       z-index: 1;
-      opacity: 0.8;
-      font-size: 18px;
+      opacity: 0.7;
+      font-size: 16px;
+      text-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
     }
     
     @keyframes floatStars {
@@ -217,10 +228,10 @@
         opacity: 0; 
       }
       10% { 
-        opacity: 0.8; 
+        opacity: 0.7; 
       }
       90% { 
-        opacity: 0.6; 
+        opacity: 0.5; 
       }
       100% { 
         transform: translateY(100vh) rotate(360deg) scale(1.2); 
@@ -241,13 +252,13 @@
     
     @media (max-width: 768px) {
       h1 {
-        font-size: 2.2rem;
-        padding: 10px 25px;
+        font-size: 2rem;
+        padding: 10px 20px;
       }
       
       .date-display {
-        font-size: 1.6rem;
-        padding: 10px 20px;
+        font-size: 1.4rem;
+        padding: 8px 15px;
       }
       
       .event-header {
@@ -256,24 +267,36 @@
       }
       
       .event-time {
-        margin-bottom: 15px;
-        font-size: 1.5rem;
+        margin-bottom: 10px;
+        font-size: 1.4rem;
         width: 100%;
       }
       
       .event-title {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
         width: 100%;
       }
       
       .moon-phase {
-        width: 120px;
-        height: 120px;
+        width: 100px;
+        height: 100px;
       }
       
       .moon-phase::before {
-        width: 100px;
-        height: 100px;
+        width: 80px;
+        height: 80px;
+        top: 10px;
+        left: 15px;
+      }
+      
+      .moon-label {
+        font-size: 1.4rem;
+        padding: 6px 12px;
+      }
+      
+      .footer {
+        font-size: 1.3rem;
+        padding: 12px;
       }
     }
   </style>
@@ -284,7 +307,7 @@
   
   <div class="container">
     <header>
-      <h1>✦ Astro & Lunar Daily Insight ✦</h1>
+      <h1>✦ Daily Astro Insight ✦</h1>
       <div class="date-display" id="currentDate">Thursday, September 21, 2025</div>
     </header>
     
@@ -315,20 +338,20 @@
       {
         datetime: "2025-09-21T08:45:00+00:00",
         event: "Mercury trine Jupiter",
-        meaning: "Expansive thinking and optimistic communication. The alignment brings clarity of thought and enhances your ability to express complex ideas with simplicity.",
-        advice: "Share your ideas with confidence. This is an excellent time for negotiations, learning, and exploring new perspectives. Trust your intuition in conversations."
+        meaning: "Expansive thinking and optimistic communication. The alignment brings clarity of thought and enhances your ability to express complex ideas with simplicity. This aspect creates a harmonious flow between intellect and intuition.",
+        advice: "Share your ideas with confidence. This is an excellent time for negotiations, learning, and exploring new perspectives. Trust your intuition in conversations and be open to receiving valuable insights from others."
       },
       {
         datetime: "2025-09-21T14:30:00+00:00",
         event: "Venus square Pluto",
-        meaning: "Intense emotional connections and transformative relationships. This aspect reveals hidden dynamics and brings powerful attractions to the surface.",
-        advice: "Be mindful of power dynamics in relationships. Embrace vulnerability and seek depth rather than control. Avoid manipulative behaviors and practice honesty."
+        meaning: "Intense emotional connections and transformative relationships. This aspect reveals hidden dynamics and brings powerful attractions to the surface. You may experience profound emotional exchanges that challenge your values and desires.",
+        advice: "Be mindful of power dynamics in relationships. Embrace vulnerability and seek depth rather than control. Avoid manipulative behaviors and practice honesty. Use this energy to transform relationships in positive ways."
       },
       {
         datetime: "2025-09-21T21:15:00+00:00",
         event: "Moon enters Sagittarius",
-        meaning: "Adventurous emotional energy and desire for freedom. This transit inspires exploration and a thirst for new experiences.",
-        advice: "Follow your curiosity. Explore new horizons either physically or intellectually. Avoid overcommitment and allow space for spontaneity."
+        meaning: "Adventurous emotional energy and desire for freedom. This transit inspires exploration and a thirst for new experiences. Your emotions may feel more optimistic and expansive, with a yearning for adventure and philosophical understanding.",
+        advice: "Follow your curiosity. Explore new horizons either physically or intellectually. Avoid overcommitment and allow space for spontaneity. This is an excellent time to plan future travels or engage in learning activities."
       }
     ];
     
@@ -364,18 +387,18 @@
     // Create stars
     function createStars() {
       const starField = document.querySelector('.star-field');
-      const starCount = 100;
+      const starCount = 80;
       
       for (let i = 0; i < starCount; i++) {
         const star = document.createElement('div');
         star.className = 'star';
         star.textContent = '✦';
-        star.style.fontSize = Math.random() * 10 + 12 + 'px';
+        star.style.fontSize = Math.random() * 8 + 10 + 'px';
         star.style.left = Math.random() * 100 + 'vw';
         star.style.top = Math.random() * 100 + 'vh';
-        star.style.opacity = Math.random() * 0.6 + 0.2;
-        star.style.animationDuration = Math.random() * 8 + 6 + 's';
-        star.style.animationDelay = Math.random() * 5 + 's';
+        star.style.opacity = Math.random() * 0.5 + 0.3;
+        star.style.animationDuration = Math.random() * 6 + 5 + 's';
+        star.style.animationDelay = Math.random() * 3 + 's';
         starField.appendChild(star);
         
         // Remove star after animation completes and create a new one
@@ -392,11 +415,11 @@
       const star = document.createElement('div');
       star.className = 'star';
       star.textContent = '✦';
-      star.style.fontSize = Math.random() * 10 + 12 + 'px';
+      star.style.fontSize = Math.random() * 8 + 10 + 'px';
       star.style.left = Math.random() * 100 + 'vw';
       star.style.top = '-50px';
-      star.style.opacity = Math.random() * 0.6 + 0.2;
-      star.style.animationDuration = Math.random() * 8 + 6 + 's';
+      star.style.opacity = Math.random() * 0.5 + 0.3;
+      star.style.animationDuration = Math.random() * 6 + 5 + 's';
       starField.appendChild(star);
       
       // Remove star after animation completes
