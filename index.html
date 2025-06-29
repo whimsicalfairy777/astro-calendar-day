@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Astro Insight</title>
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'UnifrakturMaguntia', cursive;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #EEF3ED;
+      min-height: 100vh;
+      padding: 20px;
+      overflow-x: hidden;
+      position: relative;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 10;
+    }
+    
+    header {
+      text-align: center;
+      padding: 20px 0;
+      margin-bottom: 30px;
+      border-bottom: 3px solid #9C816E;
+      position: relative;
+    }
+    
+    h1 {
+      font-size: 3.5rem;
+      margin-bottom: 10px;
+      color: #F3EEEE;
+      text-shadow: 0 0 10px rgba(156, 129, 110, 0.8);
+      letter-spacing: 3px;
+    }
+    
+    .date-display {
+      font-size: 2rem;
+      color: #D1C9BD;
+      margin-top: 15px;
+    }
+    
+    .moon-phase {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #F3EEEE, #D1C9BD, #9C816E);
+      box-shadow: 0 0 20px rgba(243, 238, 238, 0.5);
+      margin: 20px auto;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .moon-phase::before {
+      content: '';
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #0f2027, #203a43);
+      top: 10px;
+      left: 20px;
+      transform: translateX(-15%);
+    }
+    
+    .moon-label {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #F3EEEE;
+      margin-bottom: 30px;
+    }
+    
+    .event-card {
+      background: rgba(238, 243, 237, 0.1);
+      border: 2px solid #9C816E;
+      border-radius: 10px;
+      padding: 25px;
+      margin-bottom: 25px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(5px);
+    }
+    
+    .event-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #9C816E;
+    }
+    
+    .event-time {
+      font-size: 1.8rem;
+      background: #9C816E;
+      color: #303328;
+      padding: 8px 15px;
+      border-radius: 5px;
+      margin-right: 20px;
+      min-width: 130px;
+    }
+    
+    .event-title {
+      font-size: 2.2rem;
+      color: #F3EEEE;
+      flex-grow: 1;
+    }
+    
+    .event-content h3 {
+      font-size: 1.8rem;
+      color: #D1C9BD;
+      margin: 15px 0 10px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .event-content h3::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #9C816E;
+    }
+    
+    .event-content p {
+      font-size: 1.5rem;
+      line-height: 1.6;
+      margin-bottom: 15px;
+      color: #EEF3ED;
+    }
+    
+    .advice {
+      background: rgba(156, 129, 110, 0.2);
+      border-left: 4px solid #9C816E;
+      padding: 15px;
+      margin-top: 15px;
+      border-radius: 0 8px 8px 0;
+    }
+    
+    .no-events {
+      text-align: center;
+      font-size: 2.5rem;
+      padding: 50px 20px;
+      color: #D1C9BD;
+    }
+    
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 2px solid #9C816E;
+      color: #D1C9BD;
+      font-size: 1.4rem;
+    }
+    
+    .star {
+      position: absolute;
+      color: rgba(243, 238, 238, 0.8);
+      animation: floatStars linear infinite;
+      z-index: 1;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+    }
+    
+    @keyframes floatStars {
+      0% { transform: translateY(100vh) scale(0.2); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 0.8; }
+      100% { transform: translateY(-100px) scale(1.2); opacity: 0; }
+    }
+    
+    .constellation {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+    
+    .planet {
+      position: absolute;
+      border-radius: 50%;
+      z-index: 2;
+    }
+    
+    #sun {
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle, #FFD700, #FF8C00);
+      box-shadow: 0 0 50px #FF4500;
+      top: 50px;
+      right: 100px;
+    }
+    
+    #mercury {
+      width: 20px;
+      height: 20px;
+      background: linear-gradient(135deg, #A9A9A9, #696969);
+      top: 150px;
+      right: 60px;
+    }
+    
+    #venus {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #FFD700, #CD853F);
+      top: 200px;
+      right: 200px;
+    }
+    
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.8rem;
+      }
+      
+      .event-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .event-time {
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+      }
+      
+      .event-title {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Constellation background -->
+  <div class="constellation"></div>
+  
+  <!-- Floating planets -->
+  <div id="sun" class="planet"></div>
+  <div id="mercury" class="planet"></div>
+  <div id="venus" class="planet"></div>
+  
+  <div class="container">
+    <header>
+      <h1>✦ Astro & Lunar Daily Insight ✦</h1>
+      <div class="date-display" id="currentDate">Thursday, September 21, 2025</div>
+    </header>
+    
+    <div class="moon-phase"></div>
+    <div class="moon-label">Waning Crescent Moon</div>
+    
+    <div id="eventsContainer">
+      <!-- Events will be populated here -->
+    </div>
+    
+    <div class="footer">
+      ✦ Seek harmony with the cosmos and wisdom will follow ✦
+    </div>
+  </div>
+  
+  <script>
+    // Sample enriched events data for today
+    const todaysEvents = [
+      {
+        datetime: "2025-09-21T08:45:00+00:00",
+        event: "Mercury trine Jupiter",
+        meaning: "Expansive thinking and optimistic communication",
+        advice: "Share your ideas with confidence. This is an excellent time for negotiations, learning, and exploring new perspectives."
+      },
+      {
+        datetime: "2025-09-21T14:30:00+00:00",
+        event: "Venus square Pluto",
+        meaning: "Intense emotional connections and transformative relationships",
+        advice: "Be mindful of power dynamics in relationships. Embrace vulnerability and seek depth rather than control."
+      },
+      {
+        datetime: "2025-09-21T21:15:00+00:00",
+        event: "Moon enters Sagittarius",
+        meaning: "Adventurous emotional energy and desire for freedom",
+        advice: "Follow your curiosity. Explore new horizons either physically or intellectually. Avoid overcommitment."
+      }
+    ];
+    
+    // Set current date
+    const now = new Date();
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    document.getElementById('currentDate').textContent = now.toLocaleDateString('en-US', options);
+    
+    // Display events
+    const eventsContainer = document.getElementById('eventsContainer');
+    
+    if (todaysEvents.length === 0) {
+      eventsContainer.innerHTML = '<div class="no-events">No astrological events today<br>✦<br>The cosmos rests</div>';
+    } else {
+      todaysEvents.forEach(event => {
+        const eventTime = new Date(event.datetime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        
+        const eventCard = document.createElement('div');
+        eventCard.className = 'event-card';
+        eventCard.innerHTML = `
+          <div class="event-header">
+            <div class="event-time">${eventTime}</div>
+            <div class="event-title">${event.event}</div>
+          </div>
+          <div class="event-content">
+            <h3>Cosmic Meaning</h3>
+            <p>${event.meaning}</p>
+            <div class="advice">
+              <h3>Guidance</h3>
+              <p>${event.advice}</p>
+            </div>
+          </div>
+        `;
+        eventsContainer.appendChild(eventCard);
+      });
+    }
+    
+    // Create stars
+    function createStar() {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.textContent = '✦';
+      star.style.fontSize = Math.random() * 20 + 8 + 'px';
+      star.style.left = Math.random() * 100 + 'vw';
+      star.style.animationDuration = Math.random() * 6 + 4 + 's';
+      document.body.appendChild(star);
+      
+      // Remove star after animation completes
+      setTimeout(() => {
+        star.remove();
+      }, 10000);
+    }
+    
+    // Create constellation points
+    function createConstellation() {
+      const constellation = document.querySelector('.constellation');
+      for (let i = 0; i < 50; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.textContent = '•';
+        star.style.position = 'absolute';
+        star.style.fontSize = Math.random() * 10 + 5 + 'px';
+        star.style.left = Math.random() * 100 + 'vw';
+        star.style.top = Math.random() * 100 + 'vh';
+        star.style.opacity = Math.random() * 0.7 + 0.3;
+        constellation.appendChild(star);
+      }
+    }
+    
+    // Initialize
+    createConstellation();
+    setInterval(createStar, 500);
+    
+    // Animate planets
+    function animatePlanets() {
+      const sun = document.getElementById('sun');
+      const mercury = document.getElementById('mercury');
+      const venus = document.getElementById('venus');
+      
+      let sunAngle = 0;
+      let mercuryAngle = 0;
+      let venusAngle = 0;
+      
+      setInterval(() => {
+        // Sun pulsating effect
+        const sunScale = 1 + Math.sin(sunAngle) * 0.1;
+        sun.style.transform = `scale(${sunScale})`;
+        sunAngle += 0.05;
+        
+        // Mercury rotation
+        mercuryAngle += 0.1;
+        const mercuryX = 100 + Math.cos(mercuryAngle) * 80;
+        const mercuryY = 150 + Math.sin(mercuryAngle) * 60;
+        mercury.style.transform = `translate(${mercuryX}px, ${mercuryY}px)`;
+        
+        // Venus rotation
+        venusAngle += 0.07;
+        const venusX = 100 + Math.cos(venusAngle) * 120;
+        const venusY = 200 + Math.sin(venusAngle) * 90;
+        venus.style.transform = `translate(${venusX}px, ${venusY}px)`;
+      }, 50);
+    }
+    
+    animatePlanets();
+  </script>
+</body>
+</html>
