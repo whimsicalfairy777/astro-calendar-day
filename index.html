@@ -33,47 +33,54 @@
       text-align: center;
       padding: 20px 0;
       margin-bottom: 30px;
-      border-bottom: 3px solid #9C816E;
       position: relative;
     }
     
     h1 {
       font-size: 3.5rem;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
       color: #303328;
-      background: #9C816E;
-      padding: 10px 30px;
+      background: #D1C9BD;
+      padding: 15px 40px;
       display: inline-block;
-      border: 2px solid #D1C9BD;
+      border: 1px solid #9C816E;
       box-shadow: 3px 3px 8px rgba(0,0,0,0.1);
+      border-radius: 4px;
     }
     
     .date-display {
-      font-size: 2rem;
+      font-size: 2.2rem;
       color: #303328;
-      margin-top: 20px;
-      padding: 10px;
-      background: #D1C9BD;
-      border: 2px solid #9C816E;
+      padding: 12px 25px;
+      background: #F3EEEE;
+      border: 1px solid #D1C9BD;
       display: inline-block;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+    
+    .moon-section {
+      text-align: center;
+      margin: 30px 0;
+      padding: 20px;
     }
     
     .moon-container {
-      margin: 30px auto;
+      display: inline-block;
       padding: 20px;
       background: #F3EEEE;
-      border: 3px solid #D1C9BD;
-      display: inline-block;
-      border-radius: 15px;
+      border: 1px solid #D1C9BD;
+      border-radius: 8px;
+      box-shadow: 3px 3px 8px rgba(0,0,0,0.1);
     }
     
     .moon-phase {
-      width: 120px;
-      height: 120px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
       background: radial-gradient(circle at 30% 30%, #F3EEEE, #D1C9BD, #9C816E);
-      box-shadow: inset 3px 3px 8px rgba(0,0,0,0.1);
-      margin: 0 auto;
+      box-shadow: inset 2px 2px 5px rgba(0,0,0,0.1);
+      margin: 0 auto 20px;
       position: relative;
       overflow: hidden;
     }
@@ -81,34 +88,34 @@
     .moon-phase::before {
       content: '';
       position: absolute;
-      width: 100px;
-      height: 100px;
+      width: 130px;
+      height: 130px;
       border-radius: 50%;
       background: #EEF3ED;
       top: 10px;
       left: 20px;
       transform: translateX(-15%);
-      box-shadow: inset -2px -2px 4px rgba(0,0,0,0.1);
+      box-shadow: inset -1px -1px 3px rgba(0,0,0,0.1);
     }
     
     .moon-label {
       text-align: center;
       font-size: 1.8rem;
       color: #303328;
-      margin-top: 15px;
-      padding: 8px 15px;
+      padding: 10px 20px;
       background: #D1C9BD;
-      border: 2px solid #9C816E;
+      border: 1px solid #9C816E;
       display: inline-block;
+      border-radius: 4px;
     }
     
     .event-card {
       background: #F3EEEE;
-      border: 3px solid #D1C9BD;
-      border-radius: 10px;
+      border: 1px solid #D1C9BD;
+      border-radius: 6px;
       padding: 25px;
       margin-bottom: 25px;
-      box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+      box-shadow: 3px 3px 8px rgba(0,0,0,0.1);
     }
     
     .event-header {
@@ -116,19 +123,18 @@
       align-items: center;
       margin-bottom: 20px;
       padding-bottom: 15px;
-      border-bottom: 2px solid #9C816E;
+      border-bottom: 1px solid #9C816E;
     }
     
     .event-time {
       font-size: 1.8rem;
-      background: #9C816E;
+      background: #D1C9BD;
       color: #303328;
       padding: 8px 15px;
-      border-radius: 5px;
+      border-radius: 4px;
       margin-right: 20px;
       min-width: 130px;
-      border: 2px solid #D1C9BD;
-      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+      border: 1px solid #9C816E;
     }
     
     .event-title {
@@ -152,7 +158,7 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 2px;
+      height: 1px;
       background: #9C816E;
     }
     
@@ -165,11 +171,11 @@
     }
     
     .advice {
-      background: rgba(156, 129, 110, 0.1);
-      border-left: 4px solid #9C816E;
+      background: rgba(209, 201, 189, 0.3);
+      border-left: 2px solid #9C816E;
       padding: 15px;
       margin-top: 15px;
-      border-radius: 0 8px 8px 0;
+      border-radius: 0 4px 4px 0;
     }
     
     .no-events {
@@ -178,21 +184,22 @@
       padding: 50px 20px;
       color: #303328;
       background: #F3EEEE;
-      border: 3px solid #D1C9BD;
-      border-radius: 10px;
+      border: 1px solid #D1C9BD;
+      border-radius: 6px;
+      margin: 30px 0;
     }
     
     .footer {
       text-align: center;
       margin-top: 40px;
       padding: 20px;
-      border-top: 3px solid #9C816E;
+      border-top: 1px solid #9C816E;
       color: #303328;
       font-size: 1.8rem;
       background: #D1C9BD;
-      border-radius: 10px;
-      border: 2px solid #9C816E;
-      box-shadow: 3px 3px 8px rgba(0,0,0,0.1);
+      border-radius: 6px;
+      border: 1px solid #9C816E;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
     }
     
     .star {
@@ -200,76 +207,47 @@
       color: #9C816E;
       animation: floatStars linear infinite;
       z-index: 1;
-      text-shadow: 0 0 5px rgba(156, 129, 110, 0.3);
       opacity: 0.8;
+      font-size: 18px;
     }
     
     @keyframes floatStars {
-      0% { transform: translateY(100vh) scale(0.2); opacity: 0; }
-      10% { opacity: 0.8; }
-      90% { opacity: 0.6; }
-      100% { transform: translateY(-100px) scale(1.2); opacity: 0; }
+      0% { 
+        transform: translateY(-50px) rotate(0deg) scale(0.5); 
+        opacity: 0; 
+      }
+      10% { 
+        opacity: 0.8; 
+      }
+      90% { 
+        opacity: 0.6; 
+      }
+      100% { 
+        transform: translateY(100vh) rotate(360deg) scale(1.2); 
+        opacity: 0; 
+      }
     }
     
-    .constellation {
-      position: absolute;
+    .star-field {
+      position: fixed;
       width: 100%;
       height: 100%;
       top: 0;
       left: 0;
       pointer-events: none;
-    }
-    
-    .planet {
-      position: absolute;
-      border-radius: 50%;
-      z-index: 2;
-      box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-    }
-    
-    #sun {
-      width: 80px;
-      height: 80px;
-      background: radial-gradient(circle, #FFD700, #FF8C00);
-      top: 50px;
-      right: 100px;
-      border: 3px solid #D1C9BD;
-    }
-    
-    #mercury {
-      width: 20px;
-      height: 20px;
-      background: linear-gradient(135deg, #A9A9A9, #696969);
-      top: 150px;
-      right: 60px;
-      border: 2px solid #D1C9BD;
-    }
-    
-    #venus {
-      width: 40px;
-      height: 40px;
-      background: linear-gradient(135deg, #FFD700, #CD853F);
-      top: 200px;
-      right: 200px;
-      border: 2px solid #D1C9BD;
-    }
-    
-    .zodiac-symbol {
-      position: absolute;
-      font-size: 2rem;
-      color: #9C816E;
-      z-index: 1;
-      opacity: 0.7;
+      z-index: 0;
+      overflow: hidden;
     }
     
     @media (max-width: 768px) {
       h1 {
         font-size: 2.2rem;
-        padding: 8px 20px;
+        padding: 10px 25px;
       }
       
       .date-display {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
+        padding: 10px 20px;
       }
       
       .event-header {
@@ -280,22 +258,29 @@
       .event-time {
         margin-bottom: 15px;
         font-size: 1.5rem;
+        width: 100%;
       }
       
       .event-title {
         font-size: 1.8rem;
+        width: 100%;
+      }
+      
+      .moon-phase {
+        width: 120px;
+        height: 120px;
+      }
+      
+      .moon-phase::before {
+        width: 100px;
+        height: 100px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Constellation background -->
-  <div class="constellation"></div>
-  
-  <!-- Floating planets -->
-  <div id="sun" class="planet"></div>
-  <div id="mercury" class="planet"></div>
-  <div id="venus" class="planet"></div>
+  <!-- Star field background -->
+  <div class="star-field"></div>
   
   <div class="container">
     <header>
@@ -303,9 +288,11 @@
       <div class="date-display" id="currentDate">Thursday, September 21, 2025</div>
     </header>
     
-    <div class="moon-container">
-      <div class="moon-phase"></div>
-      <div class="moon-label">Waning Crescent Moon</div>
+    <div class="moon-section">
+      <div class="moon-container">
+        <div class="moon-phase"></div>
+        <div class="moon-label">Waning Crescent Moon</div>
+      </div>
     </div>
     
     <div id="eventsContainer">
@@ -375,86 +362,52 @@
     }
     
     // Create stars
+    function createStars() {
+      const starField = document.querySelector('.star-field');
+      const starCount = 100;
+      
+      for (let i = 0; i < starCount; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.textContent = '✦';
+        star.style.fontSize = Math.random() * 10 + 12 + 'px';
+        star.style.left = Math.random() * 100 + 'vw';
+        star.style.top = Math.random() * 100 + 'vh';
+        star.style.opacity = Math.random() * 0.6 + 0.2;
+        star.style.animationDuration = Math.random() * 8 + 6 + 's';
+        star.style.animationDelay = Math.random() * 5 + 's';
+        starField.appendChild(star);
+        
+        // Remove star after animation completes and create a new one
+        setTimeout(() => {
+          star.remove();
+          createStar();
+        }, parseFloat(star.style.animationDuration) * 1000 + 1000);
+      }
+    }
+    
+    // Create a single star
     function createStar() {
+      const starField = document.querySelector('.star-field');
       const star = document.createElement('div');
       star.className = 'star';
       star.textContent = '✦';
-      star.style.fontSize = Math.random() * 20 + 8 + 'px';
+      star.style.fontSize = Math.random() * 10 + 12 + 'px';
       star.style.left = Math.random() * 100 + 'vw';
-      star.style.animationDuration = Math.random() * 6 + 4 + 's';
-      document.body.appendChild(star);
+      star.style.top = '-50px';
+      star.style.opacity = Math.random() * 0.6 + 0.2;
+      star.style.animationDuration = Math.random() * 8 + 6 + 's';
+      starField.appendChild(star);
       
       // Remove star after animation completes
       setTimeout(() => {
         star.remove();
-      }, 10000);
-    }
-    
-    // Create constellation points
-    function createConstellation() {
-      const constellation = document.querySelector('.constellation');
-      const zodiacSymbols = ['♈', '♉', '♊', '♋', '♌', '♍', '♎', '♏', '♐', '♑', '♒', '♓'];
-      
-      for (let i = 0; i < 50; i++) {
-        const star = document.createElement('div');
-        star.className = 'star';
-        star.textContent = '✦';
-        star.style.position = 'absolute';
-        star.style.fontSize = Math.random() * 12 + 8 + 'px';
-        star.style.left = Math.random() * 100 + 'vw';
-        star.style.top = Math.random() * 100 + 'vh';
-        star.style.opacity = Math.random() * 0.5 + 0.3;
-        star.style.animationDuration = Math.random() * 10 + 5 + 's';
-        constellation.appendChild(star);
-      }
-      
-      // Add zodiac symbols
-      for (let i = 0; i < 12; i++) {
-        const symbol = document.createElement('div');
-        symbol.className = 'zodiac-symbol';
-        symbol.textContent = zodiacSymbols[i];
-        symbol.style.fontSize = Math.random() * 30 + 25 + 'px';
-        symbol.style.left = Math.random() * 90 + 5 + 'vw';
-        symbol.style.top = Math.random() * 80 + 10 + 'vh';
-        symbol.style.opacity = Math.random() * 0.3 + 0.2;
-        document.body.appendChild(symbol);
-      }
-    }
-    
-    // Animate planets
-    function animatePlanets() {
-      const sun = document.getElementById('sun');
-      const mercury = document.getElementById('mercury');
-      const venus = document.getElementById('venus');
-      
-      let sunAngle = 0;
-      let mercuryAngle = 0;
-      let venusAngle = 0;
-      
-      setInterval(() => {
-        // Sun pulsating effect
-        const sunScale = 1 + Math.sin(sunAngle) * 0.05;
-        sun.style.transform = `scale(${sunScale})`;
-        sunAngle += 0.05;
-        
-        // Mercury rotation
-        mercuryAngle += 0.1;
-        const mercuryX = 100 + Math.cos(mercuryAngle) * 80;
-        const mercuryY = 150 + Math.sin(mercuryAngle) * 60;
-        mercury.style.transform = `translate(${mercuryX}px, ${mercuryY}px)`;
-        
-        // Venus rotation
-        venusAngle += 0.07;
-        const venusX = 100 + Math.cos(venusAngle) * 120;
-        const venusY = 200 + Math.sin(venusAngle) * 90;
-        venus.style.transform = `translate(${venusX}px, ${venusY}px)`;
-      }, 50);
+        createStar();
+      }, parseFloat(star.style.animationDuration) * 1000 + 1000);
     }
     
     // Initialize
-    createConstellation();
-    setInterval(createStar, 500);
-    animatePlanets();
+    createStars();
   </script>
 </body>
 </html>
