@@ -14,8 +14,8 @@
     
     body {
       font-family: 'UnifrakturMaguntia', cursive;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: #EEF3ED;
+      background: #EEF3ED;
+      color: #303328;
       min-height: 100vh;
       padding: 20px;
       overflow-x: hidden;
@@ -40,15 +40,31 @@
     h1 {
       font-size: 3.5rem;
       margin-bottom: 10px;
-      color: #F3EEEE;
-      text-shadow: 0 0 10px rgba(156, 129, 110, 0.8);
-      letter-spacing: 3px;
+      color: #303328;
+      background: #9C816E;
+      padding: 10px 30px;
+      display: inline-block;
+      border: 2px solid #D1C9BD;
+      box-shadow: 3px 3px 8px rgba(0,0,0,0.1);
     }
     
     .date-display {
       font-size: 2rem;
-      color: #D1C9BD;
-      margin-top: 15px;
+      color: #303328;
+      margin-top: 20px;
+      padding: 10px;
+      background: #D1C9BD;
+      border: 2px solid #9C816E;
+      display: inline-block;
+    }
+    
+    .moon-container {
+      margin: 30px auto;
+      padding: 20px;
+      background: #F3EEEE;
+      border: 3px solid #D1C9BD;
+      display: inline-block;
+      border-radius: 15px;
     }
     
     .moon-phase {
@@ -56,8 +72,8 @@
       height: 120px;
       border-radius: 50%;
       background: radial-gradient(circle at 30% 30%, #F3EEEE, #D1C9BD, #9C816E);
-      box-shadow: 0 0 20px rgba(243, 238, 238, 0.5);
-      margin: 20px auto;
+      box-shadow: inset 3px 3px 8px rgba(0,0,0,0.1);
+      margin: 0 auto;
       position: relative;
       overflow: hidden;
     }
@@ -68,27 +84,31 @@
       width: 100px;
       height: 100px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #0f2027, #203a43);
+      background: #EEF3ED;
       top: 10px;
       left: 20px;
       transform: translateX(-15%);
+      box-shadow: inset -2px -2px 4px rgba(0,0,0,0.1);
     }
     
     .moon-label {
       text-align: center;
-      font-size: 1.5rem;
-      color: #F3EEEE;
-      margin-bottom: 30px;
+      font-size: 1.8rem;
+      color: #303328;
+      margin-top: 15px;
+      padding: 8px 15px;
+      background: #D1C9BD;
+      border: 2px solid #9C816E;
+      display: inline-block;
     }
     
     .event-card {
-      background: rgba(238, 243, 237, 0.1);
-      border: 2px solid #9C816E;
+      background: #F3EEEE;
+      border: 3px solid #D1C9BD;
       border-radius: 10px;
       padding: 25px;
       margin-bottom: 25px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(5px);
+      box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
     }
     
     .event-header {
@@ -96,7 +116,7 @@
       align-items: center;
       margin-bottom: 20px;
       padding-bottom: 15px;
-      border-bottom: 1px solid #9C816E;
+      border-bottom: 2px solid #9C816E;
     }
     
     .event-time {
@@ -107,26 +127,29 @@
       border-radius: 5px;
       margin-right: 20px;
       min-width: 130px;
+      border: 2px solid #D1C9BD;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
     }
     
     .event-title {
       font-size: 2.2rem;
-      color: #F3EEEE;
+      color: #303328;
       flex-grow: 1;
     }
     
     .event-content h3 {
       font-size: 1.8rem;
-      color: #D1C9BD;
+      color: #303328;
       margin: 15px 0 10px;
       position: relative;
       display: inline-block;
+      padding-bottom: 5px;
     }
     
     .event-content h3::after {
       content: '';
       position: absolute;
-      bottom: -5px;
+      bottom: 0;
       left: 0;
       width: 100%;
       height: 2px;
@@ -137,11 +160,12 @@
       font-size: 1.5rem;
       line-height: 1.6;
       margin-bottom: 15px;
-      color: #EEF3ED;
+      color: #303328;
+      padding: 5px 10px;
     }
     
     .advice {
-      background: rgba(156, 129, 110, 0.2);
+      background: rgba(156, 129, 110, 0.1);
       border-left: 4px solid #9C816E;
       padding: 15px;
       margin-top: 15px;
@@ -152,30 +176,38 @@
       text-align: center;
       font-size: 2.5rem;
       padding: 50px 20px;
-      color: #D1C9BD;
+      color: #303328;
+      background: #F3EEEE;
+      border: 3px solid #D1C9BD;
+      border-radius: 10px;
     }
     
     .footer {
       text-align: center;
       margin-top: 40px;
-      padding-top: 20px;
-      border-top: 2px solid #9C816E;
-      color: #D1C9BD;
-      font-size: 1.4rem;
+      padding: 20px;
+      border-top: 3px solid #9C816E;
+      color: #303328;
+      font-size: 1.8rem;
+      background: #D1C9BD;
+      border-radius: 10px;
+      border: 2px solid #9C816E;
+      box-shadow: 3px 3px 8px rgba(0,0,0,0.1);
     }
     
     .star {
       position: absolute;
-      color: rgba(243, 238, 238, 0.8);
+      color: #9C816E;
       animation: floatStars linear infinite;
       z-index: 1;
-      text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+      text-shadow: 0 0 5px rgba(156, 129, 110, 0.3);
+      opacity: 0.8;
     }
     
     @keyframes floatStars {
       0% { transform: translateY(100vh) scale(0.2); opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 0.8; }
+      10% { opacity: 0.8; }
+      90% { opacity: 0.6; }
       100% { transform: translateY(-100px) scale(1.2); opacity: 0; }
     }
     
@@ -192,15 +224,16 @@
       position: absolute;
       border-radius: 50%;
       z-index: 2;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
     }
     
     #sun {
       width: 80px;
       height: 80px;
       background: radial-gradient(circle, #FFD700, #FF8C00);
-      box-shadow: 0 0 50px #FF4500;
       top: 50px;
       right: 100px;
+      border: 3px solid #D1C9BD;
     }
     
     #mercury {
@@ -209,6 +242,7 @@
       background: linear-gradient(135deg, #A9A9A9, #696969);
       top: 150px;
       right: 60px;
+      border: 2px solid #D1C9BD;
     }
     
     #venus {
@@ -217,11 +251,25 @@
       background: linear-gradient(135deg, #FFD700, #CD853F);
       top: 200px;
       right: 200px;
+      border: 2px solid #D1C9BD;
+    }
+    
+    .zodiac-symbol {
+      position: absolute;
+      font-size: 2rem;
+      color: #9C816E;
+      z-index: 1;
+      opacity: 0.7;
     }
     
     @media (max-width: 768px) {
       h1 {
-        font-size: 2.8rem;
+        font-size: 2.2rem;
+        padding: 8px 20px;
+      }
+      
+      .date-display {
+        font-size: 1.5rem;
       }
       
       .event-header {
@@ -255,8 +303,10 @@
       <div class="date-display" id="currentDate">Thursday, September 21, 2025</div>
     </header>
     
-    <div class="moon-phase"></div>
-    <div class="moon-label">Waning Crescent Moon</div>
+    <div class="moon-container">
+      <div class="moon-phase"></div>
+      <div class="moon-label">Waning Crescent Moon</div>
+    </div>
     
     <div id="eventsContainer">
       <!-- Events will be populated here -->
@@ -268,38 +318,38 @@
   </div>
   
   <script>
-    // Sample enriched events data for today
-    const todaysEvents = [
-      {
-        datetime: "2025-09-21T08:45:00+00:00",
-        event: "Mercury trine Jupiter",
-        meaning: "Expansive thinking and optimistic communication",
-        advice: "Share your ideas with confidence. This is an excellent time for negotiations, learning, and exploring new perspectives."
-      },
-      {
-        datetime: "2025-09-21T14:30:00+00:00",
-        event: "Venus square Pluto",
-        meaning: "Intense emotional connections and transformative relationships",
-        advice: "Be mindful of power dynamics in relationships. Embrace vulnerability and seek depth rather than control."
-      },
-      {
-        datetime: "2025-09-21T21:15:00+00:00",
-        event: "Moon enters Sagittarius",
-        meaning: "Adventurous emotional energy and desire for freedom",
-        advice: "Follow your curiosity. Explore new horizons either physically or intellectually. Avoid overcommitment."
-      }
-    ];
-    
     // Set current date
     const now = new Date();
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     document.getElementById('currentDate').textContent = now.toLocaleDateString('en-US', options);
     
+    // Sample enriched events data for today
+    const todaysEvents = [
+      {
+        datetime: "2025-09-21T08:45:00+00:00",
+        event: "Mercury trine Jupiter",
+        meaning: "Expansive thinking and optimistic communication. The alignment brings clarity of thought and enhances your ability to express complex ideas with simplicity.",
+        advice: "Share your ideas with confidence. This is an excellent time for negotiations, learning, and exploring new perspectives. Trust your intuition in conversations."
+      },
+      {
+        datetime: "2025-09-21T14:30:00+00:00",
+        event: "Venus square Pluto",
+        meaning: "Intense emotional connections and transformative relationships. This aspect reveals hidden dynamics and brings powerful attractions to the surface.",
+        advice: "Be mindful of power dynamics in relationships. Embrace vulnerability and seek depth rather than control. Avoid manipulative behaviors and practice honesty."
+      },
+      {
+        datetime: "2025-09-21T21:15:00+00:00",
+        event: "Moon enters Sagittarius",
+        meaning: "Adventurous emotional energy and desire for freedom. This transit inspires exploration and a thirst for new experiences.",
+        advice: "Follow your curiosity. Explore new horizons either physically or intellectually. Avoid overcommitment and allow space for spontaneity."
+      }
+    ];
+    
     // Display events
     const eventsContainer = document.getElementById('eventsContainer');
     
     if (todaysEvents.length === 0) {
-      eventsContainer.innerHTML = '<div class="no-events">No astrological events today<br>✦<br>The cosmos rests</div>';
+      eventsContainer.innerHTML = '<div class="no-events">No astrological events today<br>✦<br>The cosmos rests in harmony</div>';
     } else {
       todaysEvents.forEach(event => {
         const eventTime = new Date(event.datetime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -343,22 +393,33 @@
     // Create constellation points
     function createConstellation() {
       const constellation = document.querySelector('.constellation');
+      const zodiacSymbols = ['♈', '♉', '♊', '♋', '♌', '♍', '♎', '♏', '♐', '♑', '♒', '♓'];
+      
       for (let i = 0; i < 50; i++) {
         const star = document.createElement('div');
         star.className = 'star';
-        star.textContent = '•';
+        star.textContent = '✦';
         star.style.position = 'absolute';
-        star.style.fontSize = Math.random() * 10 + 5 + 'px';
+        star.style.fontSize = Math.random() * 12 + 8 + 'px';
         star.style.left = Math.random() * 100 + 'vw';
         star.style.top = Math.random() * 100 + 'vh';
-        star.style.opacity = Math.random() * 0.7 + 0.3;
+        star.style.opacity = Math.random() * 0.5 + 0.3;
+        star.style.animationDuration = Math.random() * 10 + 5 + 's';
         constellation.appendChild(star);
       }
+      
+      // Add zodiac symbols
+      for (let i = 0; i < 12; i++) {
+        const symbol = document.createElement('div');
+        symbol.className = 'zodiac-symbol';
+        symbol.textContent = zodiacSymbols[i];
+        symbol.style.fontSize = Math.random() * 30 + 25 + 'px';
+        symbol.style.left = Math.random() * 90 + 5 + 'vw';
+        symbol.style.top = Math.random() * 80 + 10 + 'vh';
+        symbol.style.opacity = Math.random() * 0.3 + 0.2;
+        document.body.appendChild(symbol);
+      }
     }
-    
-    // Initialize
-    createConstellation();
-    setInterval(createStar, 500);
     
     // Animate planets
     function animatePlanets() {
@@ -372,7 +433,7 @@
       
       setInterval(() => {
         // Sun pulsating effect
-        const sunScale = 1 + Math.sin(sunAngle) * 0.1;
+        const sunScale = 1 + Math.sin(sunAngle) * 0.05;
         sun.style.transform = `scale(${sunScale})`;
         sunAngle += 0.05;
         
@@ -390,6 +451,9 @@
       }, 50);
     }
     
+    // Initialize
+    createConstellation();
+    setInterval(createStar, 500);
     animatePlanets();
   </script>
 </body>
