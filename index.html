@@ -1,470 +1,442 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Astro Calendar</title>
-  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Astro Insight</title>
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     
-    body { 
-      font-family: 'UnifrakturMaguntia', cursive; 
-      background: linear-gradient(135deg, #1a2a4a 0%, #0c1629 100%);
-      text-align: center; 
-      padding: 20px; 
-      overflow-x: hidden;
-      color: #e9e0d1; 
+    body {
+      font-family: 'UnifrakturMaguntia', cursive;
+      background: #EEF3ED;
+      color: #303328;
       min-height: 100vh;
+      padding: 20px;
+      overflow-x: hidden;
+      position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
     }
     
-    .calendar-container { 
-      background: #f7f4ed; 
-      border: 1px solid #d4c9b5; 
-      padding: 25px; 
-      display: inline-block; 
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      border-radius: 12px;
-      max-width: 95vw;
+    .container {
+      max-width: 800px;
+      width: 100%;
+      margin: 20px auto;
       position: relative;
       z-index: 10;
     }
     
-    h1 { 
-      margin: 0 0 15px; 
-      background: #e9e0d1; 
-      color: #4a4030; 
-      padding: 12px 25px; 
-      border: 1px solid #d4c9b5; 
-      display: inline-block; 
-      font-size: 32px; 
-      border-radius: 8px;
-      letter-spacing: 1px;
+    header {
+      text-align: center;
+      padding: 15px 0;
+      margin-bottom: 20px;
+      position: relative;
     }
     
-    .month-nav { 
-      display: flex; 
-      justify-content: center; 
-      align-items: center; 
-      margin-bottom: 15px; 
+    h1 {
+      font-size: 2.5rem;
+      color: #303328;
+      background: #D1C9BD;
+      padding: 12px 30px;
+      display: inline-block;
+      border: 1px solid #9C816E;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+      border-radius: 4px;
+      margin-bottom: 10px;
+      width: 100%;
+      max-width: 600px;
     }
     
-    .nav-btn { 
-      background: #e9e0d1; 
-      border: 1px solid #d4c9b5; 
-      cursor: pointer; 
-      width: 40px; 
-      height: 40px; 
-      font-size: 20px; 
-      color: #4a4030; 
-      margin: 0 10px; 
-      border-radius: 50%;
-      transition: all 0.3s;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    
-    .nav-btn:hover {
-      background: #d4c9b5;
-      transform: scale(1.05);
-    }
-    
-    #currentMonthYear { 
-      margin: 0 15px; 
-      font-size: 24px; 
-      min-width: 200px; 
-      color: #4a4030;
-      font-weight: 500;
-    }
-    
-    .calendar { 
-      display: grid; 
-      grid-template-columns: repeat(7, 35px); 
-      grid-gap: 4px; 
-      justify-content: center; 
-      margin-bottom: 20px; 
-    }
-    
-    .calendar div { 
-      width: 35px; 
-      height: 20px; 
-      line-height: 20px; 
-      cursor: pointer; 
-      color: #4a4030; 
-      background: #f3eeea; 
-      border: 1px solid #d4c9b5; 
-      transition: all .2s; 
-      font-size: 14px;
-      border-radius: 3px;
-    }
-    
-    .calendar .header { 
-      font-weight: bold; 
-      background: #e9e0d1; 
-      font-size: 12px;
-      height: 20px;
-    }
-    
-    .calendar div:hover { 
-      background: rgba(74, 64, 48, 0.1); 
-      border-color: #4a4030; 
-    }
-    
-    .calendar .today { 
-      background: rgba(74, 64, 48, 0.2); 
-      border-color: #4a4030; 
-      font-weight: bold;
-    }
-    
-    #eventSummary { 
-      font-size: 1rem; 
-      padding: 15px; 
-      background: #e9e0d1; 
-      border: 1px solid #4a4030; 
-      display: block; 
-      text-align: left; 
-      min-width: 300px; 
-      max-width: 90vw; 
-      color: #4a4030; 
-      border-radius: 8px;
-      font-family: 'Montserrat', sans-serif;
-      line-height: 1.6;
-    }
-    
-    #eventSummary strong {
-      font-weight: 500;
-    }
-    
-    .event-item {
-      padding: 10px 0;
-      border-bottom: 1px dashed #c5b8a3;
-    }
-    
-    .event-item:last-child {
-      border-bottom: none;
-    }
-    
-    .event-title {
-      display: flex;
-      align-items: center;
-      margin-bottom: 5px;
-    }
-    
-    .event-title span {
-      font-size: 1.2rem;
-      margin-right: 8px;
+    .date-display {
+      font-size: 1.3rem;
+      color: #303328;
+      padding: 8px 15px;
+      background: #F3EEEE;
+      border: 1px solid #D1C9BD;
+      display: inline-block;
+      border-radius: 4px;
+      font-family: 'UnifrakturMaguntia', cursive;
+      margin-top: 5px;
+      width: 100%;
+      max-width: 600px;
     }
     
     .moon-section {
-      margin-top: 15px;
-      padding-top: 15px;
-      border-top: 1px solid #c5b8a3;
+      text-align: center;
+      margin: 20px 0;
+      padding: 15px;
+      background: #F3EEEE;
+      border: 1px solid #D1C9BD;
+      border-radius: 6px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
     }
     
     .moon-container {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      margin-top: 10px;
+      justify-content: center;
     }
     
-    .moon-icon {
-      font-size: 2.5rem;
-      margin-right: 15px;
-    }
-    
-    .moon-details {
-      flex: 1;
-    }
-    
-    .star { 
-      position: absolute; 
-      color: rgba(255, 255, 255, 0.9);
-      animation: floatStars linear infinite; 
-      opacity: 0;
-      text-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
-      z-index: 1;
-      pointer-events: none;
-    }
-    
-    @keyframes floatStars { 
-      0% { 
-        transform: translateY(0) translateX(0) scale(0.5); 
-        opacity: 0; 
-      } 
-      20% { opacity: 1; }
-      100% { 
-        transform: translateY(100vh) translateX(20px) scale(1); 
-        opacity: 0; 
-      } 
-    }
-    
-    .event-indicator {
-      position: absolute;
-      bottom: 1px;
-      right: 1px;
-      font-size: 8px;
-      color: #8a6d46;
-    }
-    
-    .calendar-day {
+    .moon-phase {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #F3EEEE, #D1C9BD, #9C816E);
+      box-shadow: inset 2px 2px 4px rgba(0,0,0,0.1);
+      margin: 0 auto 15px;
       position: relative;
+      overflow: hidden;
     }
     
-    .footer-note {
-      margin-top: 15px;
-      font-size: 0.9rem;
-      color: #7a6e5d;
-      font-family: 'Montserrat', sans-serif;
+    .moon-phase::before {
+      content: '';
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: #EEF3ED;
+      top: 10px;
+      left: 20px;
+      transform: translateX(-15%);
+      box-shadow: inset -1px -1px 2px rgba(0,0,0,0.1);
     }
     
-    @media (max-width: 480px) {
-      .calendar-container {
-        padding: 15px;
+    .moon-label {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #303328;
+      padding: 8px 15px;
+      background: #D1C9BD;
+      border: 1px solid #9C816E;
+      display: inline-block;
+      border-radius: 4px;
+    }
+    
+    .event-card {
+      background: #F3EEEE;
+      border: 1px solid #D1C9BD;
+      border-radius: 6px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .event-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #9C816E;
+    }
+    
+    .event-time {
+      font-size: 1.5rem;
+      background: #D1C9BD;
+      color: #303328;
+      padding: 6px 12px;
+      border-radius: 4px;
+      margin-right: 15px;
+      min-width: 100px;
+      border: 1px solid #9C816E;
+    }
+    
+    .event-title {
+      font-size: 1.7rem;
+      color: #303328;
+      flex-grow: 1;
+    }
+    
+    .event-content h3 {
+      font-size: 1.5rem;
+      color: #303328;
+      margin: 12px 0 8px;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 3px;
+    }
+    
+    .event-content h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: #9C816E;
+    }
+    
+    .event-content p {
+      font-size: 1rem;
+      line-height: 1.2;
+      margin-bottom: 12px;
+      color: #303328;
+      padding: 4px 8px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    .advice {
+      background: rgba(209, 201, 189, 0.3);
+      border-left: 2px solid #9C816E;
+      padding: 12px;
+      margin-top: 12px;
+      border-radius: 0 4px 4px 0;
+    }
+    
+    .no-events {
+      text-align: center;
+      font-size: 1.8rem;
+      padding: 30px 15px;
+      color: #303328;
+      background: #F3EEEE;
+      border: 1px solid #D1C9BD;
+      border-radius: 6px;
+      margin: 25px 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+      padding: 15px;
+      border-top: 1px solid #9C816E;
+      color: #303328;
+      font-size: 1.4rem;
+      background: #D1C9BD;
+      border-radius: 6px;
+      border: 1px solid #9C816E;
+      box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .star {
+      position: absolute;
+      color: #ffffff;
+      animation: floatStars linear infinite;
+      z-index: 1;
+      opacity: 0.7;
+      font-size: 16px;
+      text-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+    }
+    
+    @keyframes floatStars {
+      0% { 
+        transform: translateY(-50px) rotate(0deg) scale(0.5); 
+        opacity: 0; 
       }
-      
+      10% { 
+        opacity: 0.7; 
+      }
+      90% { 
+        opacity: 0.5; 
+      }
+      100% { 
+        transform: translateY(100vh) rotate(360deg) scale(1.2); 
+        opacity: 0; 
+      }
+    }
+    
+    .star-field {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    
+    @media (max-width: 768px) {
       h1 {
-        font-size: 26px;
+        font-size: 1.8rem;
         padding: 10px 20px;
       }
       
-      .calendar {
-        grid-template-columns: repeat(7, 30px);
+      .date-display {
+        font-size: 1.1rem;
+        padding: 8px 12px;
       }
       
-      #currentMonthYear {
-        font-size: 20px;
-        min-width: 160px;
+      .event-header {
+        flex-direction: column;
+        align-items: flex-start;
       }
       
-      .calendar div {
-        width: 30px;
-        font-size: 12px;
+      .event-time {
+        margin-bottom: 10px;
+        font-size: 1.3rem;
+        width: 100%;
       }
       
-      #eventSummary {
-        font-size: 0.9rem;
+      .event-title {
+        font-size: 1.5rem;
+        width: 100%;
+      }
+      
+      .moon-phase {
+        width: 100px;
+        height: 100px;
+      }
+      
+      .moon-phase::before {
+        width: 80px;
+        height: 80px;
+        top: 10px;
+        left: 15px;
+      }
+      
+      .moon-label {
+        font-size: 1.3rem;
+        padding: 6px 12px;
+      }
+      
+      .footer {
+        font-size: 1.2rem;
         padding: 12px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="calendar-container">
-    <h1>Astro Calendar</h1>
-    <div class="month-nav">
-      <button class="nav-btn" onclick="changeMonth(-1)">❮</button>
-      <div id="currentMonthYear">January 2025</div>
-      <button class="nav-btn" onclick="changeMonth(1)">❯</button>
+  <!-- Star field background -->
+  <div class="star-field"></div>
+  
+  <div class="container">
+    <header>
+      <h1>✦ Daily Astro Insight ✦</h1>
+      <div class="date-display" id="currentDate">Thursday, September 21, 2025</div>
+    </header>
+    
+    <div class="moon-section">
+      <div class="moon-container">
+        <div class="moon-phase"></div>
+        <div class="moon-label">Waning Crescent Moon</div>
+      </div>
     </div>
-    <div id="calendar" class="calendar"></div>
-    <div id="eventSummary">Click any date to see astrological events</div>
-    <div class="footer-note">✦ Lunar phases shown for each date ✦</div>
+    
+    <div id="eventsContainer">
+      <!-- Events will be populated here -->
+    </div>
+    
+    <div class="footer">
+      ✦ Seek harmony with the cosmos and wisdom will follow ✦
+    </div>
   </div>
   
   <script>
-    let events = [];
-    let currentDate = new Date();
-    currentDate.setDate(1);
+    // Set current date
+    const now = new Date();
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    document.getElementById('currentDate').textContent = now.toLocaleDateString('en-US', options);
     
-    // Moon phase data
-    const moonPhases = [
-      { name: "New Moon", symbol: "🌑", description: "A time for new beginnings and setting intentions" },
-      { name: "Waxing Crescent", symbol: "🌒", description: "Energy building, take initial actions" },
-      { name: "First Quarter", symbol: "🌓", description: "Decision time, overcome challenges" },
-      { name: "Waxing Gibbous", symbol: "🌔", description: "Refine and adjust your plans" },
-      { name: "Full Moon", symbol: "🌕", description: "Peak energy, culmination and release" },
-      { name: "Waning Gibbous", symbol: "🌖", description: "Gratitude and sharing wisdom" },
-      { name: "Last Quarter", symbol: "🌗", description: "Release and forgiveness" },
-      { name: "Waning Crescent", symbol: "🌘", description: "Rest, recuperation and surrender" }
-    ];
-    
-    // Sample enriched events data (in a real app, this would come from enriched_events.json)
-    const enrichedEvents = [
+    // Sample enriched events data for today
+    const todaysEvents = [
       {
-        "datetime": "2025-01-01T14:02:00+00:00",
-        "event": "Mercury sextile Lilith",
-        "meaning": "Enhanced intuitive communication, uncovering hidden truths",
-        "advice": "Trust your instincts in conversations. Explore taboo subjects with an open mind."
+        datetime: "2025-09-21T08:45:00+00:00",
+        event: "Mercury trine Jupiter",
+        meaning: "Expansive thinking and optimistic communication. The alignment brings clarity of thought and enhances your ability to express complex ideas with simplicity. This aspect creates a harmonious flow between intellect and intuition.",
+        advice: "Share your ideas with confidence. This is an excellent time for negotiations, learning, and exploring new perspectives. Trust your intuition in conversations and be open to receiving valuable insights from others."
       },
       {
-        "datetime": "2025-01-02T11:45:00+00:00",
-        "event": "Mars trine Node",
-        "meaning": "Effortless progress toward destiny through decisive action",
-        "advice": "Take bold steps aligned with your life purpose. Your actions have karmic significance now."
+        datetime: "2025-09-21T14:30:00+00:00",
+        event: "Venus square Pluto",
+        meaning: "Intense emotional connections and transformative relationships. This aspect reveals hidden dynamics and brings powerful attractions to the surface. You may experience profound emotional exchanges that challenge your values and desires.",
+        advice: "Be mindful of power dynamics in relationships. Embrace vulnerability and seek depth rather than control. Avoid manipulative behaviors and practice honesty. Use this energy to transform relationships in positive ways."
       },
       {
-        "datetime": "2025-01-03T03:24:00+00:00",
-        "event": "Venus entered Pisces",
-        "meaning": "Compassionate spiritual love",
-        "advice": "Express unconditional acceptance. Connect through artistic/soulful bonds. Maintain healthy boundaries."
-      },
-      {
-        "datetime": "2025-01-07T08:15:00+00:00",
-        "event": "Jupiter square Uranus",
-        "meaning": "Sudden opportunities for growth through unexpected changes",
-        "advice": "Stay flexible to embrace surprising developments. Avoid impulsive decisions."
-      },
-      {
-        "datetime": "2025-01-14T19:30:00+00:00",
-        "event": "Full Moon in Cancer",
-        "meaning": "Emotional culmination regarding home and family matters",
-        "advice": "Nurture your inner child. Create sacred space for emotional release."
-      },
-      {
-        "datetime": "2025-01-22T12:40:00+00:00",
-        "event": "Sun conjunct Pluto",
-        "meaning": "Intense personal transformation and empowerment",
-        "advice": "Face your shadows courageously. Rebirth awaits on the other side of surrender."
+        datetime: "2025-09-21T21:15:00+00:00",
+        event: "Moon enters Sagittarius",
+        meaning: "Adventurous emotional energy and desire for freedom. This transit inspires exploration and a thirst for new experiences. Your emotions may feel more optimistic and expansive, with a yearning for adventure and philosophical understanding.",
+        advice: "Follow your curiosity. Explore new horizons either physically or intellectually. Avoid overcommitment and allow space for spontaneity. This is an excellent time to plan future travels or engage in learning activities."
       }
     ];
     
-    // Load enriched events
-    function loadEvents() {
-      // In a real implementation, this would fetch from 'enriched_events.json'
-      events = enrichedEvents;
-      buildCalendar(currentDate.getFullYear(), currentDate.getMonth());
-      document.getElementById('eventSummary').innerText = 'Click any date to see astrological events';
-    }
+    // Display events
+    const eventsContainer = document.getElementById('eventsContainer');
     
-    // Build the calendar
-    function buildCalendar(year, month) {
-      const cal = document.getElementById('calendar');
-      cal.innerHTML = '';
-      
-      // Set month/year header
-      const monthNames = ["January", "February", "March", "April", "May", "June",
-                         "July", "August", "September", "October", "November", "December"];
-      document.getElementById('currentMonthYear').textContent = 
-        `${monthNames[month]} ${year}`;
-      
-      // Create weekday headers
-      ['Su','Mo','Tu','We','Th','Fr','Sa'].forEach(d => { 
-        const h = document.createElement('div'); 
-        h.textContent = d; 
-        h.classList.add('header'); 
-        cal.appendChild(h); 
-      });
-      
-      // Calculate calendar dates
-      const first = new Date(year, month, 1).getDay();
-      const days = new Date(year, month + 1, 0).getDate();
-      const today = new Date();
-      const todayStr = today.toISOString().slice(0,10);
-      
-      // Add empty cells for days before first day of month
-      for(let i = 0; i < first; i++) {
-        cal.appendChild(document.createElement('div'));
-      }
-      
-      // Create day cells
-      for(let d = 1; d <= days; d++) {
-        const dtStr = `${year}-${String(month + 1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-        const cell = document.createElement('div'); 
-        cell.textContent = d;
-        cell.classList.add('calendar-day');
+    if (todaysEvents.length === 0) {
+      eventsContainer.innerHTML = '<div class="no-events">No astrological events today<br>✦<br>The cosmos rests in harmony</div>';
+    } else {
+      todaysEvents.forEach(event => {
+        const eventTime = new Date(event.datetime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
         
-        // Highlight today
-        if(dtStr === todayStr) cell.classList.add('today');
-        
-        // Add event indicators
-        const dayEvents = events.filter(e => e.datetime.slice(0,10) === dtStr);
-        if(dayEvents.length > 0) {
-          const indicator = document.createElement('div');
-          indicator.classList.add('event-indicator');
-          indicator.textContent = '✦';
-          cell.appendChild(indicator);
-        }
-        
-        // Click handler
-        cell.onclick = () => showEvents(dtStr);
-        cal.appendChild(cell);
-      }
-    }
-    
-    // Show events for selected date
-    function showEvents(dateStr) {
-      const sum = document.getElementById('eventSummary');
-      const dayEvents = events.filter(e => e.datetime.slice(0,10) === dateStr);
-      
-      // Get moon phase for this date (random for demo)
-      const moonPhase = moonPhases[Math.floor(Math.random() * moonPhases.length)];
-      
-      let html = `<strong>${formatDate(dateStr)}</strong>`;
-      
-      if(dayEvents.length === 0) {
-        html += `<div class="event-item">No astrological events recorded for this date.</div>`;
-      } else {
-        dayEvents.forEach(event => {
-          html += `
-            <div class="event-item">
-              <div class="event-title">
-                <span>✦</span>
-                <strong>${event.event}</strong>
-              </div>
-              <div><strong>Meaning:</strong> ${event.meaning}</div>
-              <div><strong>Advice:</strong> ${event.advice}</div>
-            </div>
-          `;
-        });
-      }
-      
-      // Add moon phase section
-      html += `
-        <div class="moon-section">
-          <strong>Lunar Phase</strong>
-          <div class="moon-container">
-            <div class="moon-icon">${moonPhase.symbol}</div>
-            <div class="moon-details">
-              <div><strong>${moonPhase.name}</strong></div>
-              <div>${moonPhase.description}</div>
+        const eventCard = document.createElement('div');
+        eventCard.className = 'event-card';
+        eventCard.innerHTML = `
+          <div class="event-header">
+            <div class="event-time">${eventTime}</div>
+            <div class="event-title">${event.event}</div>
+          </div>
+          <div class="event-content">
+            <h3>Cosmic Meaning</h3>
+            <p>${event.meaning}</p>
+            <div class="advice">
+              <h3>Guidance</h3>
+              <p>${event.advice}</p>
             </div>
           </div>
-        </div>
-      `;
+        `;
+        eventsContainer.appendChild(eventCard);
+      });
+    }
+    
+    // Create stars
+    function createStars() {
+      const starField = document.querySelector('.star-field');
+      const starCount = 80;
       
-      sum.innerHTML = html;
+      for (let i = 0; i < starCount; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.textContent = '✦';
+        star.style.fontSize = Math.random() * 8 + 10 + 'px';
+        star.style.left = Math.random() * 100 + 'vw';
+        star.style.top = Math.random() * 100 + 'vh';
+        star.style.opacity = Math.random() * 0.5 + 0.3;
+        star.style.animationDuration = Math.random() * 6 + 5 + 's';
+        star.style.animationDelay = Math.random() * 3 + 's';
+        starField.appendChild(star);
+        
+        // Remove star after animation completes and create a new one
+        setTimeout(() => {
+          star.remove();
+          createStar();
+        }, parseFloat(star.style.animationDuration) * 1000 + 1000);
+      }
     }
     
-    // Format date for display
-    function formatDate(dateStr) {
-      const [year, month, day] = dateStr.split('-');
-      const monthNames = ["January", "February", "March", "April", "May", "June",
-                         "July", "August", "September", "October", "November", "December"];
-      return `${monthNames[parseInt(month)-1]} ${parseInt(day)}, ${year}`;
-    }
-    
-    // Change month
-    function changeMonth(offset) {
-      currentDate.setMonth(currentDate.getMonth() + offset);
-      buildCalendar(currentDate.getFullYear(), currentDate.getMonth());
-      document.getElementById('eventSummary').innerHTML = 
-        `Showing ${document.getElementById('currentMonthYear').textContent}`;
-    }
-    
-    // Create stars with glow effect
-    function createStar() { 
-      const s = document.createElement('div'); 
-      s.className = 'star'; 
-      s.textContent = '✦'; 
-      s.style.fontSize = Math.random() * 16 + 8 + 'px'; 
-      s.style.left = Math.random() * 100 + 'vw'; 
-      s.style.top = Math.random() * 20 - 20 + 'px';
-      s.style.animationDuration = Math.random() * 4 + 3 + 's'; 
-      s.style.opacity = Math.random() * 0.5 + 0.3;
-      document.body.appendChild(s); 
-      setTimeout(() => s.remove(), 7000); 
+    // Create a single star
+    function createStar() {
+      const starField = document.querySelector('.star-field');
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.textContent = '✦';
+      star.style.fontSize = Math.random() * 8 + 10 + 'px';
+      star.style.left = Math.random() * 100 + 'vw';
+      star.style.top = '-50px';
+      star.style.opacity = Math.random() * 0.5 + 0.3;
+      star.style.animationDuration = Math.random() * 6 + 5 + 's';
+      starField.appendChild(star);
+      
+      // Remove star after animation completes
+      setTimeout(() => {
+        star.remove();
+        createStar();
+      }, parseFloat(star.style.animationDuration) * 1000 + 1000);
     }
     
     // Initialize
-    window.onload = function() {
-      loadEvents();
-      setInterval(createStar, 300);
-    };
+    createStars();
   </script>
 </body>
 </html>
