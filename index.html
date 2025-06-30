@@ -17,12 +17,8 @@
       background: #EEF3ED;
       color: #303328;
       min-height: 100vh;
-      padding: 20px;
       overflow-x: hidden;
       position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
     
     .container {
@@ -35,7 +31,6 @@
     
     header {
       text-align: center;
-      padding: 15px 0;
       margin-bottom: 20px;
       position: relative;
     }
@@ -44,37 +39,30 @@
       font-size: 2.5rem;
       color: #303328;
       background: #D1C9BD;
-      padding: 12px 30px;
-      display: inline-block;
+      display: block;
       border: 1px solid #9C816E;
       box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-      border-radius: 4px;
       margin-bottom: 10px;
-      width: 100%;
       max-width: 600px;
+      margin: 0 auto 10px;
     }
     
     .date-display {
       font-size: 1.3rem;
       color: #303328;
-      padding: 8px 15px;
       background: #F3EEEE;
       border: 1px solid #D1C9BD;
-      display: inline-block;
-      border-radius: 4px;
+      display: block;
       font-family: 'UnifrakturMaguntia', cursive;
-      margin-top: 5px;
-      width: 100%;
       max-width: 600px;
+      margin: 0 auto;
     }
     
     .moon-section {
       text-align: center;
       margin: 20px 0;
-      padding: 15px;
       background: #F3EEEE;
       border: 1px solid #D1C9BD;
-      border-radius: 6px;
       box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
       max-width: 800px;
       margin-left: auto;
@@ -116,18 +104,14 @@
       text-align: center;
       font-size: 1.5rem;
       color: #303328;
-      padding: 8px 15px;
       background: #D1C9BD;
       border: 1px solid #9C816E;
       display: inline-block;
-      border-radius: 4px;
     }
     
     .event-card {
       background: #F3EEEE;
       border: 1px solid #D1C9BD;
-      border-radius: 6px;
-      padding: 20px;
       margin-bottom: 20px;
       box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
     }
@@ -144,8 +128,6 @@
       font-size: 1.5rem;
       background: #D1C9BD;
       color: #303328;
-      padding: 6px 12px;
-      border-radius: 4px;
       margin-right: 15px;
       min-width: 100px;
       border: 1px solid #9C816E;
@@ -163,7 +145,6 @@
       margin: 12px 0 8px;
       position: relative;
       display: inline-block;
-      padding-bottom: 3px;
     }
     
     .event-content h3::after {
@@ -177,30 +158,25 @@
     }
     
     .event-content p {
-      font-size: 1rem;
-      line-height: 1.2;
+      font-size: 1.1rem;
+      line-height: 1.5;
       margin-bottom: 12px;
       color: #303328;
-      padding: 4px 8px;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     
     .advice {
       background: rgba(209, 201, 189, 0.3);
       border-left: 2px solid #9C816E;
-      padding: 12px;
       margin-top: 12px;
-      border-radius: 0 4px 4px 0;
     }
     
     .no-events {
       text-align: center;
       font-size: 1.8rem;
-      padding: 30px 15px;
       color: #303328;
       background: #F3EEEE;
       border: 1px solid #D1C9BD;
-      border-radius: 6px;
       margin: 25px 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
@@ -208,12 +184,10 @@
     .footer {
       text-align: center;
       margin-top: 30px;
-      padding: 15px;
       border-top: 1px solid #9C816E;
       color: #303328;
       font-size: 1.4rem;
       background: #D1C9BD;
-      border-radius: 6px;
       border: 1px solid #9C816E;
       box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
     }
@@ -259,12 +233,10 @@
     @media (max-width: 768px) {
       h1 {
         font-size: 1.8rem;
-        padding: 10px 20px;
       }
       
       .date-display {
         font-size: 1.1rem;
-        padding: 8px 12px;
       }
       
       .event-header {
@@ -297,12 +269,10 @@
       
       .moon-label {
         font-size: 1.3rem;
-        padding: 6px 12px;
       }
       
       .footer {
         font-size: 1.2rem;
-        padding: 12px;
       }
     }
   </style>
@@ -339,55 +309,67 @@
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     document.getElementById('currentDate').textContent = now.toLocaleDateString('en-US', options);
     
-    // Sample enriched events data for today
-    const todaysEvents = [
-      {
-        datetime: "2025-09-21T08:45:00+00:00",
-        event: "Mercury trine Jupiter",
-        meaning: "Expansive thinking and optimistic communication. The alignment brings clarity of thought and enhances your ability to express complex ideas with simplicity. This aspect creates a harmonious flow between intellect and intuition.",
-        advice: "Share your ideas with confidence. This is an excellent time for negotiations, learning, and exploring new perspectives. Trust your intuition in conversations and be open to receiving valuable insights from others."
-      },
-      {
-        datetime: "2025-09-21T14:30:00+00:00",
-        event: "Venus square Pluto",
-        meaning: "Intense emotional connections and transformative relationships. This aspect reveals hidden dynamics and brings powerful attractions to the surface. You may experience profound emotional exchanges that challenge your values and desires.",
-        advice: "Be mindful of power dynamics in relationships. Embrace vulnerability and seek depth rather than control. Avoid manipulative behaviors and practice honesty. Use this energy to transform relationships in positive ways."
-      },
-      {
-        datetime: "2025-09-21T21:15:00+00:00",
-        event: "Moon enters Sagittarius",
-        meaning: "Adventurous emotional energy and desire for freedom. This transit inspires exploration and a thirst for new experiences. Your emotions may feel more optimistic and expansive, with a yearning for adventure and philosophical understanding.",
-        advice: "Follow your curiosity. Explore new horizons either physically or intellectually. Avoid overcommitment and allow space for spontaneity. This is an excellent time to plan future travels or engage in learning activities."
-      }
-    ];
-    
-    // Display events
-    const eventsContainer = document.getElementById('eventsContainer');
-    
-    if (todaysEvents.length === 0) {
-      eventsContainer.innerHTML = '<div class="no-events">No astrological events today<br>✦<br>The cosmos rests in harmony</div>';
-    } else {
-      todaysEvents.forEach(event => {
-        const eventTime = new Date(event.datetime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    // Fetch and display today's events
+    async function loadTodaysEvents() {
+      try {
+        // Fetch the enriched_events.json file
+        const response = await fetch('enriched_events.json');
+        if (!response.ok) {
+          throw new Error('Failed to load astrological events');
+        }
         
-        const eventCard = document.createElement('div');
-        eventCard.className = 'event-card';
-        eventCard.innerHTML = `
-          <div class="event-header">
-            <div class="event-time">${eventTime}</div>
-            <div class="event-title">${event.event}</div>
-          </div>
-          <div class="event-content">
-            <h3>Cosmic Meaning</h3>
-            <p>${event.meaning}</p>
-            <div class="advice">
-              <h3>Guidance</h3>
-              <p>${event.advice}</p>
-            </div>
-          </div>
-        `;
-        eventsContainer.appendChild(eventCard);
-      });
+        const allEvents = await response.json();
+        
+        // Format today's date as YYYY-MM-DD
+        const today = new Date();
+        const todayStr = today.toISOString().split('T')[0];
+        
+        // Filter events for today
+        const todaysEvents = allEvents.filter(event => {
+          const eventDate = new Date(event.datetime);
+          const eventDateStr = eventDate.toISOString().split('T')[0];
+          return eventDateStr === todayStr;
+        });
+        
+        // Display events
+        const eventsContainer = document.getElementById('eventsContainer');
+        
+        if (todaysEvents.length === 0) {
+          eventsContainer.innerHTML = '<div class="no-events">No astrological events today<br>✦<br>The cosmos rests in harmony</div>';
+        } else {
+          eventsContainer.innerHTML = '';
+          
+          todaysEvents.forEach(event => {
+            const eventTime = new Date(event.datetime).toLocaleTimeString([], { 
+              hour: '2-digit', 
+              minute: '2-digit',
+              timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
+            });
+            
+            const eventCard = document.createElement('div');
+            eventCard.className = 'event-card';
+            eventCard.innerHTML = `
+              <div class="event-header">
+                <div class="event-time">${eventTime}</div>
+                <div class="event-title">${event.event}</div>
+              </div>
+              <div class="event-content">
+                <h3>Cosmic Meaning</h3>
+                <p>${event.meaning}</p>
+                <div class="advice">
+                  <h3>Guidance</h3>
+                  <p>${event.advice}</p>
+                </div>
+              </div>
+            `;
+            eventsContainer.appendChild(eventCard);
+          });
+        }
+      } catch (error) {
+        console.error('Error loading events:', error);
+        const eventsContainer = document.getElementById('eventsContainer');
+        eventsContainer.innerHTML = '<div class="no-events">Failed to load astrological events<br>✦<br>Please try again later</div>';
+      }
     }
     
     // Create stars
@@ -437,6 +419,7 @@
     
     // Initialize
     createStars();
+    loadTodaysEvents();
   </script>
 </body>
 </html>
